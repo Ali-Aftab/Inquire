@@ -1,50 +1,11 @@
 import React from "react";
 
-export default function ChatFeed() {
+export default function ChatForm() {
   return (
-    <div className="chat-logs">
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
-      <div className="one-chat-log">hi</div>
+    <div>
+      <form>
+        <input type="text" />
+      </form>
     </div>
   );
 }
