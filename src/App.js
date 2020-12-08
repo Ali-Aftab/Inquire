@@ -1,15 +1,15 @@
 import logo from "./logo.svg";
 import "./App.css";
-import ChatHeader from "./Components/ChatHeader";
+import Header from "./Components/Header";
 import ChatFeed from "./Components/ChatFeed";
-import ChatForm from "./Components/ChatForm";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
     <div>
-      <ChatHeader />
+      <Header />
       <ChatFeed />
-      <ChatForm />
+      <Footer />
     </div>
   );
 }
