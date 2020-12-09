@@ -6,7 +6,7 @@ export default function ChatFeed(props) {
   return (
     <div className="chat-logs">
       {chatData.map((oneMessage, ind) => (
-        <OneChatMessage message={oneMessage} ind={ind} />
+        <OneChatMessage message={oneMessage} ind={ind} key={ind} />
       ))}
     </div>
   );
