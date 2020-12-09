@@ -1,4 +1,6 @@
 import axios from "axios";
+import http from "http";
+import https from "https";
 import { useEffect, useState } from "react";
 import "./App.css";
 
@@ -11,18 +13,26 @@ function App() {
   const [firstName, setFirstName] = useState("John");
   const [lastName, setLastName] = useState("Smith");
   const [content, setContent] = useState("");
+  const httpAgent = new http.Agent({ keepAlive: true });
+  const httpsAgent = new https.Agent({ keepAlive: true });
+  const instance = axios.create({
+    httpAgent,
+    httpsAgent,
+  });
 
   const url = "https://question-toy-server.herokuapp.com/api/questions";
+  const fetchQuestions = async () => {
+    try {
+      const initialFetch = await axios.get(url, { httpAgent });
+      setChatData(initialFetch.data.questions);
+    } catch (error) {
+      window.alert("Connection to API Failed");
+    }
+  };
+
   useEffect(() => {
-    const firstFetch = async () => {
-      try {
-        const initialFetch = await axios.get(url);
-        setChatData(initialFetch.data.questions);
-      } catch (error) {
-        window.alert("Connection to API Failed");
-      }
-    };
-    firstFetch();
+    fetchQuestions();
+    testThis();
   }, []);
 
   const submitMessage = async (event) => {
@@ -30,14 +40,12 @@ function App() {
     if (content.length < 1) {
       window.alert("Please ask a question");
     } else {
-      try {
-        const sendMessage = axios.post(url, { firstName, lastName, content });
-      } catch (error) {
-        window.alert("Your message wasn't accepted!");
-      }
+      await axios
+        .post(url, { firstName, lastName, content })
+        .then(() => fetchQuestions())
+        .catch(() => window.alert("Your message did not get posted!"));
     }
   };
-  console.log(content);
 
   return (
     <div id="container">
@@ -53,17 +61,18 @@ function App() {
 }
 
 export default App;
-
-// const socket = new WebSocket(
-//   "wss://question-toy-server.herokuapp.com/api/questions"
-// );
-// socket.onopen = () => {
-//   console.log("Connected to server!");
-// };
-// socket.onmessage = (event) => {
-//   const message = event.data;
-//   console.log(message);
-// };
-// socket.onclose = () => {
-//   console.log("Disconnected from server!");
-// };
+const testThis = () => {
+  // const socket = new WebSocket(
+  //   "ws://question-toy-server.herokuapp.com/api/questions"
+  // );
+  // socket.onopen = () => {
+  //   console.log("Connected to server!");
+  // };
+  // socket.onmessage = (event) => {
+  //   const message = event.data;
+  //   console.log(message);
+  // };
+  // socket.onclose = () => {
+  //   console.log("Disconnected from server!");
+  // };
+};

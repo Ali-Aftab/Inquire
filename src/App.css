@@ -1,26 +1,23 @@
 html,
 body {
   height: 100%;
+  margin: 0;
 }
 
 #container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100%;
 }
 
 .chat-logs {
   flex: 1;
-  overflow: auto;
+  overflow-y: auto;
+  flex-direction: column;
 }
 .one-chat-log {
-  /* height: 100%; */
-  overflow: auto;
-  border-bottom: 1px solid;
   background-color: chartreuse;
-}
-.one-chat-log :last-child {
-  border: none;
+  margin: 0;
 }
 
 footer {
