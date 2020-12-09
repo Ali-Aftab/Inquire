@@ -8,6 +8,9 @@ import Footer from "./Components/Footer";
 
 function App() {
   const [chatData, setChatData] = useState([]);
+  const [firstName, setFirstName] = useState("John");
+  const [lastName, setLastName] = useState("Smith");
+  const [content, setContent] = useState("");
 
   const url = "https://question-toy-server.herokuapp.com/api/questions";
   useEffect(() => {
@@ -22,11 +25,29 @@ function App() {
     firstFetch();
   }, []);
 
+  const submitMessage = async (event) => {
+    event.preventDefault();
+    if (content.length < 1) {
+      window.alert("Please ask a question");
+    } else {
+      try {
+        const sendMessage = axios.post(url, { firstName, lastName, content });
+      } catch (error) {
+        window.alert("Your message wasn't accepted!");
+      }
+    }
+  };
+  console.log(content);
+
   return (
     <div id="container">
       <Header />
       <ChatFeed chatData={chatData} />
-      <Footer />
+      <Footer
+        submitMessage={submitMessage}
+        setContent={setContent}
+        content={content}
+      />
     </div>
   );
 }
