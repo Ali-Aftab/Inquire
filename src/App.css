@@ -1,6 +1,5 @@
 html,
 body {
-  height: 100%;
   margin: 0;
 }
 
@@ -8,21 +7,37 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100%;
+  background-color: #f1f2f6;
 }
 
 .chat-logs {
   flex: 1;
   overflow-y: auto;
   flex-direction: column;
+  margin: 8vh;
+  background-color: #f1f2f6;
 }
 .one-chat-log {
-  background-color: chartreuse;
   margin: 0;
+  width: 100%;
 }
 
 footer {
-  background-color: aqua;
+  background-color: #182c61;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 8vh;
 }
 header {
-  background-color: peachpuff;
+  background-color: #182c61;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  color: white;
+  height: 8vh;
+  font-size: 6.5vh;
 }

@@ -6,8 +6,8 @@ export default function OneChatMessage(props) {
 
   return (
     <div className="one-chat-log" key={ind}>
-      <span key={`content${ind}`}>{content}</span>
-      <span key={`name${ind}`}>{`by ${firstName} ${lastName}`}</span>
+      <div key={`content${ind}`}>{content}</div>
+      <div key={`name${ind}`}>{`by ${firstName} ${lastName}`}</div>
     </div>
   );
 }
