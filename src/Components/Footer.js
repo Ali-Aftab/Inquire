@@ -1,8 +1,8 @@
 import React from "react";
 
 export default function Footer(props) {
-  const { submitMessage, setContent, content } = props;
-  console.log(content);
+  const { submitMessage, setContent, content, isNotLoggedIn } = props;
+
   return (
     <footer>
       <form
@@ -18,7 +18,12 @@ export default function Footer(props) {
           className="chat-input-text"
           placeholder="Type your question here"
         />
-        <button className="chat-button" type="submit">
+        <button
+          className={`chat-button ${
+            isNotLoggedIn ? "disable-chat-button" : ""
+          }`}
+          type="submit"
+        >
           ?
         </button>
       </form>

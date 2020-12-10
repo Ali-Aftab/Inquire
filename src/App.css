@@ -112,6 +112,12 @@ footer {
   box-shadow: 0 0.5px white;
 }
 
+.disable-chat-button {
+  opacity: 0.6;
+  pointer-events: none;
+  border: 2px solid #182c61;
+}
+
 @keyframes fadeInFromBottom {
   0% {
     opacity: 0;
