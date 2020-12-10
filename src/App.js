@@ -40,14 +40,12 @@ function App() {
       setIsNotLoggedIn(false);
     }
   }, []);
-  console.log("LAST", lastName);
 
   const login = (event) => {
     event.preventDefault();
     if (!firstName || !lastName) {
       window.alert("Please type your first and last name!");
     } else {
-      console.log("here");
       setIsNotLoggedIn(false);
     }
   };
@@ -83,6 +81,7 @@ function App() {
         submitMessage={submitMessage}
         setContent={setContent}
         content={content}
+        isNotLoggedIn={isNotLoggedIn}
       />
     </div>
   );
