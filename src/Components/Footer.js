@@ -6,6 +6,7 @@ export default function Footer(props) {
   return (
     <footer>
       <form
+        className="type-form"
         onSubmit={(event) => {
           submitMessage(event);
         }}
@@ -14,8 +15,12 @@ export default function Footer(props) {
           type="text"
           onChange={(event) => setContent(event.target.value)}
           value={content}
+          className="chat-input-text"
+          placeholder="Type your question here"
         />
-        <button type="submit">Enter</button>
+        <button className="chat-button" type="submit">
+          ?
+        </button>
       </form>
     </footer>
   );

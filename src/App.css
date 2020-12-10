@@ -48,7 +48,7 @@ footer {
 }
 
 .one-chat-log {
-  font-size: 1.4rem;
+  font-size: 3.5vh;
   padding: 1rem 1rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -62,7 +62,7 @@ footer {
 
 .one-chat-user {
   color: #ff6b81;
-  font-size: 0.8rem;
+  font-size: 2vh;
   text-align: right;
   margin-top: 0;
 }
@@ -74,6 +74,44 @@ footer {
   -o-animation: fadeInFromBottom ease 3s;
   -ms-animation: fadeInFromBottom ease 3s;
 }
+
+.type-form {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1vh 10vh 1vh 10vh;
+}
+
+.chat-input-text {
+  width: 70%;
+  border-radius: 4px;
+  color: #ff4757;
+  padding: 6px 20px;
+  margin: 0 0;
+  font-size: 3vh;
+  /* border: 2px solid #ff4757; */
+  /* padding: 0.5%; */
+}
+
+.chat-button {
+  background-color: #f1f2f6;
+  color: #ff4757;
+  border: 2px solid #ff4757;
+  padding: 1vh 2vh;
+  border-radius: 4px;
+  width: 10%;
+  font-size: 3vh;
+}
+.chat-button:hover {
+  color: white;
+  background-color: #ff4757;
+  cursor: pointer;
+  box-shadow: 0 1px white;
+}
+.chat-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 0.5px white;
+}
+
 @keyframes fadeInFromBottom {
   0% {
     opacity: 0;
