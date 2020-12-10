@@ -7,12 +7,15 @@ import "./App.css";
 import Header from "./Components/Header";
 import ChatFeed from "./Components/ChatFeed";
 import Footer from "./Components/Footer";
+import Login from "./Components/Login";
 
 function App() {
   const [chatData, setChatData] = useState([]);
   const [firstName, setFirstName] = useState("John");
   const [lastName, setLastName] = useState("Smith");
   const [content, setContent] = useState("");
+  const [isNotLoggedIn, setIsNotLoggedIn] = useState(true);
+
   const httpAgent = new http.Agent({ keepAlive: true });
   const httpsAgent = new https.Agent({ keepAlive: true });
   const instance = axios.create({
@@ -33,7 +36,21 @@ function App() {
   useEffect(() => {
     fetchQuestions();
     testThis();
+    if (firstName && lastName) {
+      setIsNotLoggedIn(false);
+    }
   }, []);
+  console.log("LAST", lastName);
+
+  const login = (event) => {
+    event.preventDefault();
+    if (!firstName || !lastName) {
+      window.alert("Please type your first and last name!");
+    } else {
+      console.log("here");
+      setIsNotLoggedIn(false);
+    }
+  };
 
   const submitMessage = async (event) => {
     event.preventDefault();
@@ -50,7 +67,18 @@ function App() {
   return (
     <div id="container">
       <Header />
-      <ChatFeed chatData={chatData} />
+      {isNotLoggedIn ? (
+        <Login
+          login={login}
+          firstName={firstName}
+          setFirstName={setFirstName}
+          lastName={lastName}
+          setLastName={setLastName}
+        />
+      ) : (
+        <ChatFeed chatData={chatData} />
+      )}
+
       <Footer
         submitMessage={submitMessage}
         setContent={setContent}
