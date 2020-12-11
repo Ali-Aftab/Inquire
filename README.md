@@ -1,6 +1,6 @@
 # Inquire
 
-InThis is a Question Submission app that allows the audience to submit questions to the presenter and the questions can be viewed by all parties.
+This is a Question Submission app that allows the audience to submit questions to the presenter and the questions can be viewed by all parties.
 
 ## Requirements
 
