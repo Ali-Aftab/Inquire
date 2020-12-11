@@ -1,7 +1,6 @@
 import axios from "axios";
-import http from "http";
-import https from "https";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+
 import "./App.css";
 
 import Header from "./Components/Header";
@@ -11,22 +10,16 @@ import Login from "./Components/Login";
 
 function App() {
   const [chatData, setChatData] = useState([]);
-  const [firstName, setFirstName] = useState("John");
-  const [lastName, setLastName] = useState("Smith");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [content, setContent] = useState("");
   const [isNotLoggedIn, setIsNotLoggedIn] = useState(true);
-
-  const httpAgent = new http.Agent({ keepAlive: true });
-  const httpsAgent = new https.Agent({ keepAlive: true });
-  const instance = axios.create({
-    httpAgent,
-    httpsAgent,
-  });
+  const mostRecentRef = useRef(null);
 
   const url = "https://question-toy-server.herokuapp.com/api/questions";
   const fetchQuestions = async () => {
     try {
-      const initialFetch = await axios.get(url, { httpAgent });
+      const initialFetch = await axios.get(url);
       setChatData(initialFetch.data.questions);
     } catch (error) {
       window.alert("Connection to API Failed");
@@ -35,7 +28,7 @@ function App() {
 
   useEffect(() => {
     fetchQuestions();
-    testThis();
+    const timer = setInterval(() => fetchQuestions(), 1000 * 30);
     if (firstName && lastName) {
       setIsNotLoggedIn(false);
     }
@@ -55,10 +48,19 @@ function App() {
     if (content.length < 1) {
       window.alert("Please ask a question");
     } else {
-      await axios
-        .post(url, { firstName, lastName, content })
-        .then(() => fetchQuestions())
-        .catch(() => window.alert("Your message did not get posted!"));
+      try {
+        const submittedResponse = await axios.post(url, {
+          firstName,
+          lastName,
+          content,
+        });
+        const nextQuestion = submittedResponse.data.question;
+        const updatedList = [...chatData, nextQuestion];
+        setChatData(updatedList);
+        mostRecentRef.current.scrollIntoView({ behavior: "smooth" });
+      } catch (error) {
+        window.alert("Your message did not get posted!");
+      }
     }
   };
 
@@ -74,7 +76,7 @@ function App() {
           setLastName={setLastName}
         />
       ) : (
-        <ChatFeed chatData={chatData} />
+        <ChatFeed chatData={chatData} mostRecentRef={mostRecentRef} />
       )}
 
       <Footer
@@ -88,18 +90,3 @@ function App() {
 }
 
 export default App;
-const testThis = () => {
-  // const socket = new WebSocket(
-  //   "ws://question-toy-server.herokuapp.com/api/questions"
-  // );
-  // socket.onopen = () => {
-  //   console.log("Connected to server!");
-  // };
-  // socket.onmessage = (event) => {
-  //   const message = event.data;
-  //   console.log(message);
-  // };
-  // socket.onclose = () => {
-  //   console.log("Disconnected from server!");
-  // };
-};
