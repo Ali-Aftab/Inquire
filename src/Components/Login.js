@@ -3,7 +3,7 @@ import React from "react";
 export default function Login(props) {
   const { login, firstName, setFirstName, lastName, setLastName } = props;
   return (
-    <form className="login" onSubmit={(e) => login(e)}>
+    <form className="login fade-from-bottom" onSubmit={(e) => login(e)}>
       <div className="login-field">First Name</div>
       <div className="login-field">
         <input

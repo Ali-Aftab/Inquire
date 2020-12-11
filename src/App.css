@@ -68,11 +68,6 @@ button:active {
   justify-content: center;
   flex-direction: column;
   color: #ff4757;
-  animation: fadeInFromBottom ease 1s;
-  -webkit-animation: fadeInFromBottom ease 1s;
-  -moz-animation: fadeInFromBottom ease 1s;
-  -o-animation: fadeInFromBottom ease 1s;
-  -ms-animation: fadeInFromBottom ease 1s;
 }
 .login-input {
   font-size: 3vh;
@@ -101,12 +96,12 @@ button:active {
   text-align: right;
   margin-top: 0;
 }
-.one-chat-container:last-child {
-  animation: fadeInFromBottom ease 3s;
-  -webkit-animation: fadeInFromBottom ease 3s;
-  -moz-animation: fadeInFromBottom ease 3s;
-  -o-animation: fadeInFromBottom ease 3s;
-  -ms-animation: fadeInFromBottom ease 3s;
+.fade-from-bottom {
+  animation: fadeInFromBottom ease 0.5s;
+  -webkit-animation: fadeInFromBottom ease 0.5s;
+  -moz-animation: fadeInFromBottom ease 0.5s;
+  -o-animation: fadeInFromBottom ease 0.5s;
+  -ms-animation: fadeInFromBottom ease 0.5s;
 }
 .type-form {
   display: flex;
@@ -119,7 +114,7 @@ button:active {
   border-radius: 4px;
   padding: 6px 20px;
   margin: 0 0;
-  font-size: 3vh;
+  font-size: 2vh;
   /* border: 2px solid #ff4757; */
   /* padding: 0.5%; */
 }
