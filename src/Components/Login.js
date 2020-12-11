@@ -11,6 +11,7 @@ export default function Login(props) {
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           className="login-input"
+          alt="First Name"
         />
       </div>
       <div className="login-field">Last Name</div>
@@ -20,9 +21,12 @@ export default function Login(props) {
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           className="login-input"
+          alt="Last Name"
         />
       </div>
-      <button className="login-field">Login</button>
+      <button className="login-field" alt="Login Here">
+        Login
+      </button>
     </form>
   );
 }
