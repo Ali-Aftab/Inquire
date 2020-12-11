@@ -15,8 +15,12 @@ export default function Footer(props) {
           type="text"
           onChange={(event) => setContent(event.target.value)}
           value={content}
-          className="chat-input-text"
-          placeholder="Type your question here"
+          className={`chat-input-text ${
+            isNotLoggedIn ? "disable-input-text" : ""
+          }`}
+          placeholder={
+            isNotLoggedIn ? "Please Login" : "Type your question here"
+          }
         />
         <button
           className={`chat-button ${
