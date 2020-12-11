@@ -51,6 +51,8 @@ button:active {
 .one-chat-container {
   margin-right: 1rem;
   margin-left: 1rem;
+  margin-top: 1.4rem;
+  /* margin-bottom: 1rem; */
   /* margin-left: auto; */
   /* max-width: 50vh; */
 }
@@ -94,7 +96,7 @@ button:active {
 .one-chat-user {
   color: #ff6b81;
   font-size: 2vh;
-  text-align: right;
+  /* text-align: right; */
   margin-top: 0;
 }
 .fade-from-bottom {
