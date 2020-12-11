@@ -28,7 +28,7 @@ function App() {
 
   useEffect(() => {
     fetchQuestions();
-    const timer = setInterval(() => fetchQuestions(), 1000 * 30);
+    setInterval(() => fetchQuestions(), 1000 * 30);
     if (firstName && lastName) {
       setIsNotLoggedIn(false);
     }
@@ -57,6 +57,7 @@ function App() {
         const nextQuestion = submittedResponse.data.question;
         const updatedList = [...chatData, nextQuestion];
         setChatData(updatedList);
+        setContent("");
         mostRecentRef.current.scrollIntoView({ behavior: "smooth" });
       } catch (error) {
         window.alert("Your message did not get posted!");
